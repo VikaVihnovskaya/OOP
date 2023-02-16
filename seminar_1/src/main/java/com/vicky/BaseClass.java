@@ -1,5 +1,5 @@
 package com.vicky;
-public class BaseClass {
+public abstract class BaseClass implements GameInterface {
     private String name;
     private Integer level;
     private Integer hp;
@@ -13,5 +13,10 @@ public class BaseClass {
         this.power = power;
         this.tool = tool;
 
+    }
+
+    @Override
+    public String getInfo() {
+        return "Я персонаж";
     }
 }

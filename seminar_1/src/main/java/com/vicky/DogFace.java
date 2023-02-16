@@ -1,5 +1,5 @@
 package com.vicky;
-public class DogFace extends BaseClass implements HelpInterface, AttackInterface {
+public abstract class DogFace extends BaseClass implements HelpInterface, AttackInterface {
     private Integer stamina;
 
     public DogFace(String name, Integer level, Integer hp, Integer power, String tool, Integer stamina) {

@@ -1,6 +1,6 @@
 package com.vicky;
 
-public class Shooters extends BaseClass{
+public abstract class Shooters extends BaseClass{
     private Integer focus;
     private Integer shells;
 

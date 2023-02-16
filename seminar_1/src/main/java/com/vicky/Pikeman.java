@@ -1,12 +1,23 @@
 package com.vicky;
 
 public class Pikeman extends DogFace implements RunAwayInterface{
-    public Pikeman(String name, Integer level, Integer hp, Integer power, String tool, Integer stamina) {
-        super(name, level, hp, power, tool, stamina);
+
+    public Pikeman(String name) {
+        super(name, 1,100, 50, "Pika", 10);
     }
 
     @Override
     public void runAway() {
 
+    }
+
+    @Override
+    public void step() {
+
+    }
+
+    @Override
+    public String getInfo() {
+        return "Я копейщик";
     }
 }

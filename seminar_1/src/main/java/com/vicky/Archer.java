@@ -1,8 +1,9 @@
 package com.vicky;
 public class Archer extends Shooters implements HelpInterface, ShootInterface {
 
-    public Archer(String name, Integer level, Integer hp, Integer power, String tool, Integer focus, Integer shells) {
-        super(name, level, hp, power, tool, focus, shells);
+    public Archer(String name) {
+        super(name, 1, 100, 100,"Crossbow", 12, 10);
+
     }
 
     @Override
@@ -17,6 +18,17 @@ public class Archer extends Shooters implements HelpInterface, ShootInterface {
 
     @Override
     public void reload() {
+
+    }
+
+    @Override
+    public void step() {
+
+    }
+
+    @Override
+    public String getInfo() {
+        return "Я арбалетчик!";
 
     }
 }

@@ -1,15 +1,24 @@
 package com.vicky;
 
 public class Wizard extends MagicClass implements HealInterface{
-    private Boolean spells;
+    private final Boolean spells;
 
-    public Wizard(String name, Integer level, Integer hp, Integer power, String tool, Integer mana, Boolean spells) {
-        super(name, level, hp, power, tool, mana);
-        this.spells = spells;
+    public Wizard(String name) {
+        super(name, 1, 100, 100, "Stick", 20);
+        this.spells = true;
     }
-
     @Override
     public void heal() {
 
+    }
+
+    @Override
+    public void step() {
+
+    }
+
+    @Override
+    public String getInfo() {
+        return "Я колдун!";
     }
 }

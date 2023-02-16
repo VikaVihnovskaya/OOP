@@ -1,6 +1,6 @@
 package com.vicky;
 
-public class MagicClass extends BaseClass{
+public abstract class MagicClass extends BaseClass{
     private Integer mana;
 
     public MagicClass(String name, Integer level, Integer hp, Integer power, String tool, Integer mana) {

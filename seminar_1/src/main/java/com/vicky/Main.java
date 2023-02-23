@@ -1,35 +1,42 @@
 package com.vicky;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Main {
 
     public static void main(String[] args) {
-        BaseClass archer = new Archer("Bob");
-        BaseClass bandit = new Bandit("Rob");
-        BaseClass countrymen = new CountryMen("Ivan");
-        BaseClass monk = new Monk("Gerald");
-        BaseClass pikeman = new Pikeman("Alex");
-        BaseClass sniper = new Sniper("Mike");
-        BaseClass wizard = new Wizard("Sansay");
-        BaseClass pikemanTwo = new Pikeman("Jordan");
-        BaseClass sniperTwo = new Sniper("Miguel");
-        BaseClass wizardTwo = new Wizard("Sunny");
 
-        List<BaseClass> baseClasses = new ArrayList<>();
-        baseClasses.add(archer);
-        baseClasses.add(bandit);
-        baseClasses.add(countrymen);
-        baseClasses.add(monk);
-        baseClasses.add(pikeman);
-        baseClasses.add(sniper);
-        baseClasses.add(wizard);
-        baseClasses.add(pikemanTwo);
-        baseClasses.add(sniperTwo);
-        baseClasses.add(wizardTwo);
+        List<BaseClass> firstTeam = new ArrayList<>();
+        firstTeam.add( new CountryMen("Ivan"));
+        firstTeam.add( new CountryMen("Petr"));
+        firstTeam.add( new Bandit ("Bill"));
+        firstTeam.add( new Sniper("Max"));
+        firstTeam.add( new Sniper("Garry"));
+        firstTeam.add( new Sniper("Frank"));
+        firstTeam.add( new Wizard("Rikky"));
+        firstTeam.add( new CountryMen("Alex"));
+        firstTeam.add( new Bandit("Stepan"));
+        firstTeam.add( new Wizard("Gerald"));
 
-        baseClasses.forEach(baseClass -> System.out.println(baseClass.getInfo()));
 
+        List<BaseClass> secondTeam = new ArrayList<>();
+        secondTeam.add (new CountryMen("Fedor"));
+        secondTeam.add (new CountryMen("Mihail"));
+        secondTeam.add (new Pikeman("Jordan"));
+        secondTeam.add (new Pikeman("Oleg"));
+        secondTeam.add(new Pikeman("Slava"));
+        secondTeam.add(new Archer("Bob"));
+        secondTeam.add(new Archer("Bred"));
+        secondTeam.add(new Archer("Viktor"));
+        secondTeam.add(new Monk("Ruslan"));
+        secondTeam.add(new Monk("Petr"));
+
+
+        Stream.concat(firstTeam.stream(), secondTeam.stream())
+                .sorted(Comparator.comparingInt(BaseClass::getSpeed))
+                .forEach(System.out::println);
     }
 }

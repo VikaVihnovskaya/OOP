@@ -4,7 +4,7 @@ public class Monk extends MagicClass implements HealInterface{
     private final Boolean pray;
 
     public Monk(String name) {
-        super(name, 1, 100, 50, "Book", 10);
+        super(name, 30, 12, 7, -4, -4, 30, 5);
         this.pray = true;
     }
 

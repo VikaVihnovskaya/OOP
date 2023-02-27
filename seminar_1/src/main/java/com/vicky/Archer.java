@@ -33,7 +33,7 @@ public class Archer extends Shooters implements HelpInterface, ShootInterface {
     public void step(List<BaseClass> allies, List<BaseClass> enemies) {
         if (getState().equals(Status.DIE) || getShots() == 0) return;
         BaseClass nearestEnemy = gameClassFinder.findNearest(this, enemies);
-        System.out.printf(getInfo() + "Найден ближайший враг %s", nearestEnemy);
+        System.out.printf(getInfo() + " :" + getName() + ". Найден ближайший враг %s", nearestEnemy);
         System.out.println();
         float damage = (nearestEnemy.getDefence() - getAttack() > 0) ? getDamageMin() : (nearestEnemy.getDefence() - getAttack() < 0) ? getDamageMax() : (getDamageMax() + getDamageMin()) / 2;
         nearestEnemy.getDamage(damage);

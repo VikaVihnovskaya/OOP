@@ -1,6 +1,5 @@
 package com.vicky;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CountryMen extends BaseClass implements HelpInterface, HideInterface, RunAwayInterface {
@@ -30,7 +29,12 @@ public class CountryMen extends BaseClass implements HelpInterface, HideInterfac
 
     @Override
     public void step(List<BaseClass> allies, List<BaseClass> enemies) {
-
+        if (!getState().equals(Status.DIE)) {
+            System.out.println(getInfo() + " :" + getName() + ". Я не умер.");
+            setState(Status.STAND);
+        } else {
+            System.out.println(getInfo() + " :" + getName() + ". Я умер.");
+        }
     }
 
     @Override

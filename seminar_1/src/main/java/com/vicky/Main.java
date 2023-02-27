@@ -3,6 +3,7 @@ package com.vicky;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Main {
@@ -10,33 +11,42 @@ public class Main {
     public static void main(String[] args) {
 
         List<BaseClass> firstTeam = new ArrayList<>();
-        firstTeam.add( new CountryMen("Ivan"));
-        firstTeam.add( new CountryMen("Petr"));
-        firstTeam.add( new Bandit ("Bill"));
-        firstTeam.add( new Sniper("Max"));
-        firstTeam.add( new Sniper("Garry"));
-        firstTeam.add( new Sniper("Frank"));
-        firstTeam.add( new Wizard("Rikky"));
-        firstTeam.add( new CountryMen("Alex"));
-        firstTeam.add( new Bandit("Stepan"));
-        firstTeam.add( new Wizard("Gerald"));
+        firstTeam.add(new CountryMen("Ivan", 1, 1));
+        firstTeam.add(new CountryMen("Petr", 1, 2));
+        firstTeam.add(new Bandit("Bill", 1, 3));
+        firstTeam.add(new Sniper("Max", 1, 4));
+        firstTeam.add(new Sniper("Garry", 1, 5));
+        firstTeam.add(new Sniper("Frank", 1, 6));
+        firstTeam.add(new Wizard("Rikky", 1, 7));
+        firstTeam.add(new CountryMen("Alex", 1, 8));
+        firstTeam.add(new Bandit("Stepan", 1, 9));
+        firstTeam.add(new Wizard("Gerald", 1, 10));
 
 
         List<BaseClass> secondTeam = new ArrayList<>();
-        secondTeam.add (new CountryMen("Fedor"));
-        secondTeam.add (new CountryMen("Mihail"));
-        secondTeam.add (new Pikeman("Jordan"));
-        secondTeam.add (new Pikeman("Oleg"));
-        secondTeam.add(new Pikeman("Slava"));
-        secondTeam.add(new Archer("Bob"));
-        secondTeam.add(new Archer("Bred"));
-        secondTeam.add(new Archer("Viktor"));
-        secondTeam.add(new Monk("Ruslan"));
-        secondTeam.add(new Monk("Petr"));
+        secondTeam.add(new CountryMen("Fedor", 10, 1));
+        secondTeam.add(new CountryMen("Mihail", 10, 2));
+        secondTeam.add(new Pikeman("Jordan", 10, 3));
+        secondTeam.add(new Pikeman("Oleg", 10, 4));
+        secondTeam.add(new Pikeman("Slava", 10, 5));
+        secondTeam.add(new Archer("Bob", 10, 6));
+        secondTeam.add(new Archer("Bred", 10, 7));
+        secondTeam.add(new Archer("Viktor", 10, 8));
+        secondTeam.add(new Monk("Ruslan", 10, 9));
+        secondTeam.add(new Monk("Petr", 10, 10));
 
 
-        Stream.concat(firstTeam.stream(), secondTeam.stream())
+        List<BaseClass> mergedTeam = Stream.concat(firstTeam.stream(), secondTeam.stream())
                 .sorted(Comparator.comparingInt(BaseClass::getSpeed))
-                .forEach(System.out::println);
+                .collect(Collectors.toList());
+        mergedTeam.forEach(System.out::println);
+        System.out.println("------- Игра начинается ----");
+        for (BaseClass baseClass : mergedTeam) {
+            if (firstTeam.contains(baseClass)) baseClass.step(firstTeam, secondTeam);
+            else baseClass.step(secondTeam, firstTeam);
+        }
+        System.out.println("------- Все ходы завершены ----");
+        mergedTeam.forEach(System.out::println);
+
     }
 }

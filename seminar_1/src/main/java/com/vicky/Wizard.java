@@ -1,15 +1,18 @@
 package com.vicky;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Wizard extends MagicClass implements HealInterface{
     private final Boolean spells;
 
-    public Wizard(String name) {
-        super(name,30, 17, 12, -5, -5, 30, 9);
+    public Wizard(String name, Integer x, Integer y) {
+        super(name,30f, 17, 12, -5, -5, 30, 9, new Coordinate(x, y));
         this.spells = true;
     }
 
-    public Wizard(String name, Integer hp, Integer attack, Integer defence, Integer damageMin, Integer damageMax, Integer hpMax, Integer speed, Boolean spells) {
-        super(name, hp, attack, defence, damageMin, damageMax, hpMax, speed);
+    public Wizard(String name, Float hp, Integer attack, Integer defence, Integer damageMin, Integer damageMax, Integer hpMax, Integer speed, Boolean spells, Coordinate coordinate) {
+        super(name, hp, attack, defence, damageMin, damageMax, hpMax, speed, coordinate);
         this.spells = spells;
     }
 
@@ -19,7 +22,7 @@ public class Wizard extends MagicClass implements HealInterface{
     }
 
     @Override
-    public void step() {
+    public void step(List<BaseClass> allies, List<BaseClass> enemies) {
 
     }
 

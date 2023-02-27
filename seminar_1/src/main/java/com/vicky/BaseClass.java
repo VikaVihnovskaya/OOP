@@ -1,15 +1,19 @@
 package com.vicky;
 public abstract class BaseClass implements GameInterface {
     private String name;
-    private Integer hp;
+    private Float hp;
     private Integer attack;
     private Integer defence;
     private Integer damageMin;
     private Integer damageMax;
     private Integer hpMax;
     private Integer speed;
+    private Coordinate coordinate;
+    private Status state;
+    ;
+    protected GameClassFinder gameClassFinder = new CoordGameClassFinder();
 
-    public BaseClass(String name, Integer hp, Integer attack, Integer defence, Integer damageMin, Integer damageMax, Integer hpMax, Integer speed) {
+    public BaseClass(String name, Float hp, Integer attack, Integer defence, Integer damageMin, Integer damageMax, Integer hpMax, Integer speed, Coordinate coordinate) {
         this.name = name;
         this.hp = hp;
         this.attack = attack;
@@ -18,6 +22,8 @@ public abstract class BaseClass implements GameInterface {
         this.damageMax = damageMax;
         this.hpMax = hpMax;
         this.speed = speed;
+        this.coordinate = coordinate;
+        this.state = Status.STAND;
     }
 
     @Override
@@ -33,11 +39,11 @@ public abstract class BaseClass implements GameInterface {
         this.name = name;
     }
 
-    public Integer getHp() {
+    public Float getHp() {
         return hp;
     }
 
-    public void setHp(Integer hp) {
+    public void setHp(Float hp) {
         this.hp = hp;
     }
 
@@ -89,9 +95,31 @@ public abstract class BaseClass implements GameInterface {
         this.speed = speed;
     }
 
+    public Status getState() {
+        return state;
+    }
+
+    public void setState(Status state) {
+        this.state = state;
+    }
+
+    public Coordinate getCoordinate() {
+        return coordinate;
+    }
+
+    public void setCoordinate(Coordinate coordinate) {
+        this.coordinate = coordinate;
+    }
+
+    protected void getDamage(float damage){
+        hp -= damage;
+        if (hp > hpMax) hp = Float.valueOf(hpMax);
+        if (hp < 0) state = Status.DIE;
+    }
+
     @Override
     public String toString() {
-        return getInfo() + "{" +
+        return getInfo()+"{" +
                 "name='" + name + '\'' +
                 ", hp=" + hp +
                 ", attack=" + attack +
@@ -100,6 +128,8 @@ public abstract class BaseClass implements GameInterface {
                 ", damageMax=" + damageMax +
                 ", hpMax=" + hpMax +
                 ", speed=" + speed +
+                ", coordinate=" + coordinate +
+                ", state=" + state +
                 '}';
     }
 }

@@ -1,10 +1,13 @@
 package com.vicky;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Monk extends MagicClass implements HealInterface{
     private final Boolean pray;
 
-    public Monk(String name) {
-        super(name, 30, 12, 7, -4, -4, 30, 5);
+    public Monk(String name, Integer x, Integer y) {
+        super(name, 30f, 12, 7, -4, -4, 30, 5, new Coordinate(x, y));
         this.pray = true;
     }
 
@@ -15,7 +18,7 @@ public class Monk extends MagicClass implements HealInterface{
     }
 
     @Override
-    public void step() {
+    public void step(List<BaseClass> allies, List<BaseClass> enemies) {
 
     }
 

@@ -1,13 +1,16 @@
 package com.vicky;
 
-public class Sniper extends Shooters implements ShootInterface {
-    public Sniper(String name) {
+import java.util.ArrayList;
+import java.util.List;
 
-        super(name,10, 12, 10, 8, 10, 10, 9, 32);
+public class Sniper extends Shooters implements ShootInterface {
+    public Sniper(String name, Integer x, Integer y) {
+
+        super(name,10f, 12, 10, 8, 10, 10, 9, 32, new Coordinate(x,y));
     }
 
-    public Sniper(String name, Integer hp, Integer attack, Integer defence, Integer damageMin, Integer damageMax, Integer hpMax, Integer speed, Integer shots) {
-        super(name, hp, attack, defence, damageMin, damageMax, hpMax, speed, shots);
+    public Sniper(String name, Float hp, Integer attack, Integer defence, Integer damageMin, Integer damageMax, Integer hpMax, Integer speed, Integer shots, Coordinate coordinate) {
+        super(name, hp, attack, defence, damageMin, damageMax, hpMax, speed, shots, coordinate);
     }
 
     @Override
@@ -21,7 +24,7 @@ public class Sniper extends Shooters implements ShootInterface {
     }
 
     @Override
-    public void step() {
+    public void step(List<BaseClass> allies, List<BaseClass> enemies) {
 
     }
 

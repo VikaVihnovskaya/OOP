@@ -10,7 +10,7 @@ public abstract class BaseClass implements GameInterface {
     private Integer speed;
     private Coordinate coordinate;
     private Status state;
-    ;
+
     protected GameClassFinder gameClassFinder = new CoordGameClassFinder();
 
     public BaseClass(String name, Float hp, Integer attack, Integer defence, Integer damageMin, Integer damageMax, Integer hpMax, Integer speed, Coordinate coordinate) {

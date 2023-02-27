@@ -3,7 +3,7 @@ package com.vicky;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Wizard extends MagicClass implements HealInterface{
+public class Wizard extends MagicClass{
     private final Boolean spells;
 
     public Wizard(String name, Integer x, Integer y) {
@@ -14,11 +14,6 @@ public class Wizard extends MagicClass implements HealInterface{
     public Wizard(String name, Float hp, Integer attack, Integer defence, Integer damageMin, Integer damageMax, Integer hpMax, Integer speed, Boolean spells, Coordinate coordinate) {
         super(name, hp, attack, defence, damageMin, damageMax, hpMax, speed, coordinate);
         this.spells = spells;
-    }
-
-    @Override
-    public void heal() {
-
     }
 
     @Override

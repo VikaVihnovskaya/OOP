@@ -1,5 +1,5 @@
 package com.vicky;
 
 public interface HealInterface {
-    void heal();
+    void heal(BaseClass ally);
 }

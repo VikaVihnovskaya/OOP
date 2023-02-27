@@ -18,6 +18,13 @@ public class CoordGameClassFinder implements GameClassFinder {
         return team.get(index);
     }
 
+    @Override
+    public BaseClass findNearestWithLowHp(List<BaseClass> team) {
+        return team.stream()
+                .filter(baseClass -> baseClass.getHp() != baseClass.getHpMax().floatValue())
+                .findFirst().orElse(null);
+    }
+
     protected Double getDistance(Coordinate currentClassCoords, Coordinate opponentCoords) {
         return Math.sqrt(Math.pow(currentClassCoords.getX().doubleValue() - opponentCoords.getY().doubleValue(), 2) + Math.pow(currentClassCoords.getY().doubleValue() - opponentCoords.getY().doubleValue(), 2));
     }

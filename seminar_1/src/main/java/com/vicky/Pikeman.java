@@ -20,11 +20,6 @@ public class Pikeman extends DogFace implements RunAwayInterface{
     }
 
     @Override
-    public void step(List<BaseClass> allies, List<BaseClass> enemies) {
-
-    }
-
-    @Override
     public String getInfo() {
         return "Я копейщик";
     }

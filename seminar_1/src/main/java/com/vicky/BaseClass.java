@@ -12,6 +12,9 @@ public abstract class BaseClass implements GameInterface {
     private Status state;
 
     protected GameClassFinder gameClassFinder = new CoordGameClassFinder();
+    protected FieldChecker fieldChecker = new DefaultFieldChecker();
+    protected DistanceService distanceService = new DefaultDistanceService();
+    protected StepService stepService = new DefaultStepService();
 
     public BaseClass(String name, Float hp, Integer attack, Integer defence, Integer damageMin, Integer damageMax, Integer hpMax, Integer speed, Coordinate coordinate) {
         this.name = name;

@@ -18,9 +18,6 @@ public class Bandit extends DogFace implements HideInterface{
     public void hide() {
     }
 
-    @Override
-    public void step(List<BaseClass> allies, List<BaseClass> enemies) {
-    }
 
     @Override
     public String getInfo() {

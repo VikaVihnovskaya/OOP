@@ -30,6 +30,7 @@ public class Main {
         firstTeam.add(new Bandit("Stepan", 1, 9));
         firstTeam.add(new Wizard("Gerald", 1, 10));
 
+
         secondTeam.add(new CountryMen("Fedor", 10, 1));
         secondTeam.add(new CountryMen("Mihail", 10, 2));
         secondTeam.add(new Pikeman("Jordan", 10, 3));

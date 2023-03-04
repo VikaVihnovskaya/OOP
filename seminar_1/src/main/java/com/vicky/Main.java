@@ -1,16 +1,24 @@
 package com.vicky;
 
+import com.vicky.view.View;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Main {
 
+    public static List<BaseClass> firstTeam = new ArrayList<>();
+    public static List<BaseClass> secondTeam = new ArrayList<>();
+    public static List<BaseClass> mergedTeam = new ArrayList<>();
     public static void main(String[] args) {
+        Scanner userInput = new Scanner(System.in);
+        System.out.print("Press Enter to begin.");
+        userInput.nextLine();
 
-        List<BaseClass> firstTeam = new ArrayList<>();
         firstTeam.add(new CountryMen("Ivan", 1, 1));
         firstTeam.add(new CountryMen("Petr", 1, 2));
         firstTeam.add(new Bandit("Bill", 1, 3));
@@ -22,8 +30,6 @@ public class Main {
         firstTeam.add(new Bandit("Stepan", 1, 9));
         firstTeam.add(new Wizard("Gerald", 1, 10));
 
-
-        List<BaseClass> secondTeam = new ArrayList<>();
         secondTeam.add(new CountryMen("Fedor", 10, 1));
         secondTeam.add(new CountryMen("Mihail", 10, 2));
         secondTeam.add(new Pikeman("Jordan", 10, 3));
@@ -36,17 +42,26 @@ public class Main {
         secondTeam.add(new Monk("Petr", 10, 10));
 
 
-        List<BaseClass> mergedTeam = Stream.concat(firstTeam.stream(), secondTeam.stream())
+         mergedTeam.addAll(Stream.concat(firstTeam.stream(), secondTeam.stream())
                 .sorted(Comparator.comparingInt(BaseClass::getSpeed))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
         mergedTeam.forEach(System.out::println);
-        System.out.println("------- Игра начинается ----");
-        for (BaseClass baseClass : mergedTeam) {
-            if (firstTeam.contains(baseClass)) baseClass.step(firstTeam, secondTeam);
-            else baseClass.step(secondTeam, firstTeam);
+        while (true){
+            View.view();
+            userInput.nextLine();
+            for (BaseClass baseClass : mergedTeam) {
+                if (firstTeam.contains(baseClass)) baseClass.step(firstTeam, secondTeam);
+                else baseClass.step(secondTeam, firstTeam);
+            }
+
         }
-        System.out.println("------- Все ходы завершены ----");
-        mergedTeam.forEach(System.out::println);
+//        System.out.println("------- Игра начинается ----");
+//        for (BaseClass baseClass : mergedTeam) {
+//            if (firstTeam.contains(baseClass)) baseClass.step(firstTeam, secondTeam);
+//            else baseClass.step(secondTeam, firstTeam);
+//        }
+//        System.out.println("------- Все ходы завершены ----");
+//        mergedTeam.forEach(System.out::println);
 
     }
 }

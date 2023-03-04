@@ -1,13 +1,12 @@
 package com.vicky;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Wizard extends MagicClass{
+public class Wizard extends MagicClass {
     private final Boolean spells;
 
     public Wizard(String name, Integer x, Integer y) {
-        super(name,30f, 17, 12, -5, -5, 30, 9, new Coordinate(x, y));
+        super(name, 30f, 17, 12, -5, -5, 30, 9, new Coordinate(x, y));
         this.spells = true;
     }
 
